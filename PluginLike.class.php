@@ -14,7 +14,12 @@ if (!class_exists('Plugin')) {
 
 class PluginLike extends Plugin
 {
-
+    protected $aInherits = [
+        'action' => [
+            'ActionAjax' => '_ActionAjax'
+        ]
+        
+    ];
     
     public function Init()
     {
@@ -22,9 +27,9 @@ class PluginLike extends Plugin
 //            'plugin.wiki.markitup.punkt'
 //        ]);
 //        
-//        $this->Component_Add('wiki:punkt');
-//        
-//        $this->Viewer_AppendScript(Plugin::GetTemplatePath('wiki'). '/assets/js/init.js');
+        $this->Component_Add('like:like');
+
+        $this->Viewer_AppendScript(Plugin::GetTemplatePath('like'). '/assets/js/init.js');
     }
 
     public function Activate()

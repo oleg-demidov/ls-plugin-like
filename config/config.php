@@ -2,33 +2,13 @@
 /**
  * Таблица БД
  */
-$config['$root$']['db']['table']['wiki_wiki'] = '___db.table.prefix___wiki';
-$config['$root$']['db']['table']['wiki_wiki_page'] = '___db.table.prefix___wiki_page';
-$config['$root$']['db']['table']['wiki_wiki_punkt'] = '___db.table.prefix___wiki_punkt';
+$config['$root$']['db']['table']['like_like_target'] = '___db.table.prefix___like_target';
+$config['$root$']['db']['table']['like_like'] = '___db.table.prefix___like';
 
 /**
  * Роутинг
  */
-$config['$root$']['router']['page']['wiki'] = 'PluginWiki_ActionWiki';
-
-$config['admin']['assets'] = [
-    'js' => [
-        //'assets/js/admin.js'
-    ]
-];
-
-
-$config['$root$']['block']['wiki_panel'] = array(
-    'action' => array(
-        'wiki'
-    ),
-    'blocks' => array(
-        'right' => array(
-            'wiki' => array('priority' => 100,'params' => array('plugin' => 'wiki'))
-        )
-    ),
-    'clear'  => false,
-);
+$config['$root$']['router']['page']['like'] = 'PluginLike_ActionLike';
 
 
 

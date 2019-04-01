@@ -1,6 +1,6 @@
 <?php
 
-class PluginWiki_Update_CreateTable extends ModulePluginManager_EntityUpdate
+class PluginLike_Update_CreateTable extends ModulePluginManager_EntityUpdate
 {
     /**
      * Выполняется при обновлении версии
