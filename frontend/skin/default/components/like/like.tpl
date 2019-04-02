@@ -8,6 +8,9 @@
     
     {if $target}
         {$count = $target->like->getCount()}
+        {$state = $target->like->getUserLike()}
+        {$target_type = $target->like->getParam('target_type')}
+        {$target_id = $target->getId()}
     {/if}
         
     {$attributes['data-btn-ajax'] = true}

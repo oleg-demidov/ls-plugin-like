@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Мар 31 2019 г., 03:01
--- Версия сервера: 5.7.24-0ubuntu0.16.04.1
--- Версия PHP: 5.6.38-3+ubuntu16.04.1+deb.sury.org+1
+-- Время создания: Апр 02 2019 г., 04:23
+-- Версия сервера: 5.7.25-0ubuntu0.16.04.2
+-- Версия PHP: 5.6.40-1+ubuntu16.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,8 +17,21 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `pdd`
+-- База данных: `pddfend`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `prefix_like`
+--
+
+CREATE TABLE `prefix_like` (
+  `type_id` int(10) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `target_id` bigint(20) UNSIGNED NOT NULL,
+  `type` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
 
@@ -34,15 +47,18 @@ CREATE TABLE `prefix_like_target` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Дамп данных таблицы `prefix_like_target`
---
-
-INSERT INTO `prefix_like_target` (`id`, `code`, `title`, `date_create`) VALUES
-(1, 'question', 'Вопросы', '2019-03-30 23:01:48');
-
---
 -- Индексы сохранённых таблиц
 --
+
+--
+-- Индексы таблицы `prefix_like`
+--
+ALTER TABLE `prefix_like`
+  ADD PRIMARY KEY (`type_id`,`user_id`,`target_id`),
+  ADD KEY `target_id` (`type_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `entity_id` (`target_id`),
+  ADD KEY `state` (`type`);
 
 --
 -- Индексы таблицы `prefix_like_target`
@@ -60,7 +76,7 @@ ALTER TABLE `prefix_like_target`
 -- AUTO_INCREMENT для таблицы `prefix_like_target`
 --
 ALTER TABLE `prefix_like_target`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

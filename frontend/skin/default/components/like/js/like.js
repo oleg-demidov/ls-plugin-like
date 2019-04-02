@@ -32,25 +32,22 @@
             
         },
         onClick:function(){
-            this.loading();
+            this.element.bsButton('loading');
             
             if(this.element.hasClass('active')){
                 this.option('params.state', 1);
             }
             
             this._load("load", {}, function(response){
-                this.element.bsButton('loaded');
                 this.option('params.state', response.state);
                 this.element.button('toggle');
                 this.element.bsButton('setCount', response.count);
-            }.bind(this), {showProgress:false});
-        },
-        
-        loading:function(){
-            this.element.bsButton('loading');
-        },
-        loaded:function(){
-            this.element.bsButton('loaded');
+            }.bind(this), {
+                showProgress:false, 
+                onComplete: function(response){
+                    this.element.bsButton('loaded');
+                }.bind(this)
+            });
         }
         
     });

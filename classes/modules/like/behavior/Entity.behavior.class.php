@@ -71,6 +71,14 @@ class PluginLike_ModuleLike_BehaviorEntity extends Behavior
         );
     }
 
+    public function getUserLike() {
+        if(!$oUserCurrent = $this->User_GetUserCurrent()){
+            return 0;
+        }
+        $this->PluginLike_Like_AttachUserLikes([$this->oObject], $this->getParam('target_type'), $oUserCurrent->getId());
+        
+        return $this->oObject->getUserLike();
+    }
     
     /**
      * Возвращает сущности

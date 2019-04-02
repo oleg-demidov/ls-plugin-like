@@ -14,7 +14,7 @@ class PluginLike_ModuleLike extends ModuleORM
         if (!is_array($aEntityItems)) {
             $aEntityItems = array($aEntityItems);
         }
-        $aEntitiesId = array();
+        $aEntitiesId = array(0);
         foreach ($aEntityItems as $oEntity) {
             $aEntitiesId[] = $oEntity->getId();
         }
@@ -38,7 +38,7 @@ class PluginLike_ModuleLike extends ModuleORM
         }
     }
     
-    public function CreateTarget($sEntity, $sCode, $sTitle) {
+    public function CreateTarget( $sCode, $sTitle) {
         
         $oTarget = Engine::GetEntity('PluginLike_Like_Target', [
             'code'   => $sCode,
@@ -48,17 +48,17 @@ class PluginLike_ModuleLike extends ModuleORM
         return $oTarget->Save();
     }
     
-    public function Like( $iUserId, $sTargetType, $iTargetId) {
+    public function Like( $iUserId, $sTargetType, $iTargetId, $sType = self::TYPE_LIKE) {
         
         if(!$oTarget = $this->GetTargetByCode($sTargetType)){
-            return;
+            return 'No target type';
         }
         
         $oLike = Engine::GetEntity('PluginLike_Like_Like', [
             'user_id' => $iUserId,
             'type_id' => $oTarget->getId(),
             'target_id' => $iTargetId,
-            'type' => 1
+            'type' => $sType
         ]);
         
         if(!$oLike->_Validate()){
@@ -67,6 +67,8 @@ class PluginLike_ModuleLike extends ModuleORM
         
         return $oLike->Save();
     }
+    
+   
     
     public function RemoveLike( $iUserId, $sTargetType, $iTargetId) {
         
@@ -100,7 +102,7 @@ class PluginLike_ModuleLike extends ModuleORM
         if (!isset($aFilter['#select'])) {
             $aFilter['#select'] = array();
         }
-
+        
         $sJoin = " LEFT JOIN (SELECT count(*) as count_like, l.target_id FROM `" 
             . Config::Get('db.table.like_like') . "` as l JOIN `" 
             . Config::Get('db.table.like_like_target') . "` as lt "

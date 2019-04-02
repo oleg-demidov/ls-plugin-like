@@ -43,14 +43,14 @@ class PluginLike_ActionLike extends ActionPlugin{
             $this->MessageAddError('no auth');
         }
 
-        if(getRequest('state') == 1){
+        if(getRequest('state') == 1 ){
             
             $mResult = $this->PluginLike_Like_RemoveLike( 
                 $oUserCurrent->getId(), 
                 getRequest('targetType'),
                 getRequest('targetId')
             );
-            $this->Message_AddNotice('Удалено из избранного');
+            $this->Message_AddNotice($this->Lang_Get('plugin.like.like.notices.remove'));
             $this->Viewer_AssignAjax('state', 0);
 
         }else{
@@ -58,14 +58,13 @@ class PluginLike_ActionLike extends ActionPlugin{
             $sResult = $this->PluginLike_Like_Like( 
                 $oUserCurrent->getId(), 
                 getRequest('targetType'),
-                getRequest('targetId'),
-                getRequest('state')
+                getRequest('targetId')
             );
 
             if(is_string($sResult)){ 
                 $this->Message_AddError($sResult);
             }else{
-                $this->Message_AddNotice('Добавлено в избранное');
+                $this->Message_AddNotice($this->Lang_Get('plugin.like.like.notices.add'));
             }
             $this->Viewer_AssignAjax('state', 1);
         
