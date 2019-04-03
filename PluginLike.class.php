@@ -14,12 +14,7 @@ if (!class_exists('Plugin')) {
 
 class PluginLike extends Plugin
 {
-    protected $aInherits = [
-        'action' => [
-            'ActionAjax' => '_ActionAjax'
-        ]
-        
-    ];
+    
     
     public function Init()
     {
