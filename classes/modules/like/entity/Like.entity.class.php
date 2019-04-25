@@ -4,7 +4,7 @@ class PluginLike_ModuleLike_EntityLike extends EntityORM
 {
     
     protected $aRelations = array(
-        'target' => array( self::RELATION_TYPE_BELONGS_TO, 'PluginWiki_ModuleWiki_EntityTarget', 'target_id' )
+        'target' => array( self::RELATION_TYPE_BELONGS_TO, 'PluginWiki_ModuleWiki_EntityTarget', 'type_id' )
     );
     
     protected $aValidateRules = [
@@ -20,5 +20,9 @@ class PluginLike_ModuleLike_EntityLike extends EntityORM
             return $this->Lang_Get('plugin.like.like.notices.error_validate_exists');
         }
         return true;
+    }
+    
+    public function getEntity() {
+        
     }
 }

@@ -4,7 +4,7 @@
 {block 'button_options'}
     {component_define_params params=[ 'target_type', 'target_id', 'state', 'count', 'target' ]}
     
-    {$icon = [icon => "thumbs-up", display => 'r', classes => 'mr-1']}
+    {$icon = [icon => "trash", display => 's']}
     
     {if $target}
         {$count = $target->like->getCount()}
@@ -17,7 +17,7 @@
     {$attributes['data-like'] = true}
     {$attributes['data-param-target-type'] = $target_type}
     {$attributes['data-param-target-id'] = $target_id}
-    {$attributes['data-param-state'] = {$state|default:0}}
+    {$attributes['data-param-state'] = {$state|default:1}}
     {$attributes['data-loading-text'] = "<i class='fa fa-circle-o-notch fa-spin'></i> {$text}"}
     
     
@@ -30,10 +30,6 @@
         {$badgeClasses = "d-none"}
     {/if}
 
-    {$badge = [
-        text => {$count|default:''},
-        classes => $badgeClasses,
-        bmods => $bmods
-    ]}
+    {$bmods = "{$bmods} sm"}
     
 {/block}

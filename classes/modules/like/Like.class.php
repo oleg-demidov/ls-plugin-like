@@ -38,10 +38,11 @@ class PluginLike_ModuleLike extends ModuleORM
         }
     }
     
-    public function CreateTarget( $sCode, $sTitle) {
+    public function CreateTarget( $sEntity, $sTitle) {
         
         $oTarget = Engine::GetEntity('PluginLike_Like_Target', [
-            'code'   => $sCode,
+            'entity' => $sEntity,
+            'code'   => strtolower(Engine::GetEntityName(Engine::GetEntity($sEntity))),
             'title'  => $sTitle
         ]);
         
@@ -51,7 +52,7 @@ class PluginLike_ModuleLike extends ModuleORM
     public function Like( $iUserId, $sTargetType, $iTargetId, $sType = self::TYPE_LIKE) {
         
         if(!$oTarget = $this->GetTargetByCode($sTargetType)){
-            return 'No target type';
+            return $this->Lang_Get('plugin.like.like.notices.error_no_target_type', ['entity' => $sTargetType]);
         }
         
         $oLike = Engine::GetEntity('PluginLike_Like_Like', [

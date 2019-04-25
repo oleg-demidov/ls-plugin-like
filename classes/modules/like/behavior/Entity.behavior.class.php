@@ -38,6 +38,8 @@ class PluginLike_ModuleLike_BehaviorEntity extends Behavior
         // Колбек для сообщения о нажатии нравится.
         // Указывать можно строкой с полным вызовом метода модуля, например, "PluginArticle_Main_GetCountArticle"
         'callback_like'          => null,
+        // Поле с коротким именем сущности
+        'title_field' => 'title'
     );
     
     /**
@@ -113,6 +115,12 @@ class PluginLike_ModuleLike_BehaviorEntity extends Behavior
             'type' => $sType
         ]);
     }
-
+    /**
+     * Пытается взять Имя сущности с учетом параметра title_field вызывая геттер
+     * @return string
+     */
+    public function getTitle() {
+        return func_text_words(call_user_func([$this->oObject, 'get'.func_camelize($this->getParam('title_field'))]),3);
+    }
     
 }

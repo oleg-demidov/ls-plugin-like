@@ -4,7 +4,9 @@
     "dependencies":{
         "bs-button":"*"
     },
-    
+    "templates":{
+        "remove":"like-remove.tpl"
+    },
     "scripts": {
         "like":"js/like.js"
     }

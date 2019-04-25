@@ -62,10 +62,12 @@ class PluginLike_ModuleLike_BehaviorModule extends Behavior
             return;
         }
         
-        if($aParams['aEntities']){
-            if($oBehaviorLike = array_shift($aParams['aEntities'])->GetBehavior('like')){
-                $sTargetType = $oBehaviorLike->getParam('target_type');
-            }
+        if(!$aParams['aEntities']){
+            return;
+        }
+        
+        if($oBehaviorLike = array_shift($aParams['aEntities'])->GetBehavior('like')){
+            $sTargetType = $oBehaviorLike->getParam('target_type');
         }
         
         $aEntities = $aParams['aEntities'];
