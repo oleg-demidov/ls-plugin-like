@@ -13,14 +13,22 @@
         {$target_id = $target->getId()}
     {/if}
         
-    {$attributes['data-btn-ajax'] = true}
-    {$attributes['data-like'] = true}
+{*    attributes  => [ "data-toggle"=>"modal-tab", "data-target"=>"#nav-tab-authlogin"],*}
+    {if $oUserCurrent}
+        {$attributes['data-btn'] = true}
+        {$attributes['data-like'] = true}
+        
+    {else}
+        {$text = "<span data-toggle='modal-tab' data-target='#nav-tab-authlogin'>{$aLang.plugin.questions.question.actions.like}</span>"}
+        {$attributes[ "data-toggle"] = "modal"}
+        {$attributes["data-target"] = "#modalAuth"}
+    {/if}
+
+    
+    
     {$attributes['data-param-target-type'] = $target_type}
     {$attributes['data-param-target-id'] = $target_id}
     {$attributes['data-param-state'] = {$state|default:0}}
-    {$attributes['data-loading-text'] = "<i class='fa fa-circle-o-notch fa-spin'></i> {$text}"}
-    
-    
     
     {if $state}
         {$classes = "active"}
