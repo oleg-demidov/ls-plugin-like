@@ -13,7 +13,7 @@
         {$target_id = $target->getId()}
     {/if}
         
-    {$attributes['data-btn-ajax'] = true}
+    {$attributes['data-btn'] = true}
     {$attributes['data-like'] = true}
     {$attributes['data-param-target-type'] = $target_type}
     {$attributes['data-param-target-id'] = $target_id}
