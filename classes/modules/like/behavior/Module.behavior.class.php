@@ -50,6 +50,28 @@ class PluginLike_ModuleLike_BehaviorModule extends Behavior
             1000
         )
     );
+    
+    /**
+     * Модифицирует результат ORM запроса
+     *
+     * @param $aParams
+     */
+    public function CallbackGetItemsByFilterBefore($aParams)
+    {
+        if($oEntity = Engine::GetEntity($aParams['sEntityFull'])){
+            if($oBehaviorLike = $oEntity->GetBehavior('like')){
+                $sTargetType = $oBehaviorLike->getParam('target_type');
+            }
+        }
+        
+        $aFilter = $this->PluginLike_Like_RewriteFilter(
+            $aParams['aFilter'], 
+            $aParams['sEntityFull'],
+            $sTargetType);
+        
+        $aParams['aFilter'] = $aFilter;
+    }
+
 
     /**
      * Модифицирует фильтр в ORM запросе
@@ -75,26 +97,6 @@ class PluginLike_ModuleLike_BehaviorModule extends Behavior
         $this->PluginLike_Like_AttachUserLikes($aEntities, $sTargetType, $oUserCurrent->getId());
     }
 
-    /**
-     * Модифицирует результат ORM запроса
-     *
-     * @param $aParams
-     */
-    public function CallbackGetItemsByFilterBefore($aParams)
-    {
-        if($oEntity = Engine::GetEntity($aParams['sEntityFull'])){
-            if($oBehaviorLike = $oEntity->GetBehavior('like')){
-                $sTargetType = $oBehaviorLike->getParam('target_type');
-            }
-        }
-        
-        $aFilter = $this->PluginLike_Like_RewriteFilter(
-            $aParams['aFilter'], 
-            $aParams['sEntityFull'],
-            $sTargetType);
-        
-        $aParams['aFilter'] = $aFilter;
-    }
-
+    
     
 }
