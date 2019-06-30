@@ -67,10 +67,12 @@ class PluginLike_ModuleLike_BehaviorEntity extends Behavior
      */
     public function CallbackAfterDelete()
     {
-        $this->PluginLike_Like_RemoveLikesByTargetId(
-            $this->getParam('target_type'), 
-            $this->oObject->_getPrimaryKeyValue()
-        );
+        $oTargetType = $this->PluginLike_Like_GetTargetByCode($this->getParam('target_type'));
+        
+        $this->PluginLike_Like_DeleteLikeItemsByFilter([
+            'type_id' => $oTargetType->getId(), 
+            'target_id' => $this->oObject->_getPrimaryKeyValue()
+        ]);
     }
 
     public function getUserLike() {
