@@ -6,7 +6,7 @@
  */
 
 namespace LS\Plugin;
-
+use Plugin;
 /**
  * Запрещаем напрямую через браузер обращение к этому файлу.
  */
@@ -14,14 +14,11 @@ if (!class_exists('Plugin')) {
     die('Hacking attempt!');
 }
 
-class PluginLike extends \Plugin
+class Like extends Plugin
 {
-    public function __construct() { echo 'sdsd';
-        parent::__construct();
-    }
-
-        public function Init()
-    {
+    
+    public function Init()
+    { 
 //        $this->Lang_AddLangJs([
 //            'plugin.wiki.markitup.punkt'
 //        ]);
