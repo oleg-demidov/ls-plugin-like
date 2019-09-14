@@ -2,7 +2,7 @@
     "name": "like",
     "version": "1.0.0",
     "dependencies":{
-        "bs-button":"*"
+        "button":"*"
     },
     "templates":{
         "remove":"like-remove.tpl"

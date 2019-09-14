@@ -1,0 +1,14 @@
+{
+    "name": "livestreet/plugin-like",
+    "description": "Plugin for Livestreet likes",
+    "type": "livestreet-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Oleg Demidov",
+            "email": "end-fin@yandex.ru"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
