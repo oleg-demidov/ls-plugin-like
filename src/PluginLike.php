@@ -14,11 +14,13 @@ if (!class_exists('Plugin')) {
     die('Hacking attempt!');
 }
 
-class Like extends \Plugin
+class PluginLike extends \Plugin
 {
-    
-    
-    public function Init()
+    public function __construct() { echo 'sdsd';
+        parent::__construct();
+    }
+
+        public function Init()
     {
 //        $this->Lang_AddLangJs([
 //            'plugin.wiki.markitup.punkt'
