@@ -5,19 +5,14 @@
  *
  */
 
-/**
- * Запрещаем напрямую через браузер обращение к этому файлу.
- */
-if (!class_exists('Plugin')) {
-    die('Hacking attempt!');
-}
+use Plugin;
+
 
 class PluginLike extends Plugin
 {
     
-    
     public function Init()
-    {
+    { 
 //        $this->Lang_AddLangJs([
 //            'plugin.wiki.markitup.punkt'
 //        ]);

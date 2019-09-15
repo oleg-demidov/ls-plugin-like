@@ -13,7 +13,7 @@
     "require": {},
     "autoload": {
         "classmap" : [
-            "PluginLike.php"
+            "PluginLike.class.php"
         ]
     }
 }
