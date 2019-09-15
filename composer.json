@@ -12,8 +12,8 @@
     "minimum-stability": "dev",
     "require": {},
     "autoload": {
-        "psr-4" : {
-            "LS\\Plugin\\": "src/"
-        }
+        "classmap" : [
+            "PluginLike.php"
+        ]
     }
 }

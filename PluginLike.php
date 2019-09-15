@@ -7,14 +7,9 @@
 
 namespace LS\Plugin;
 use Plugin;
-/**
- * Запрещаем напрямую через браузер обращение к этому файлу.
- */
-if (!class_exists('Plugin')) {
-    die('Hacking attempt!');
-}
 
-class Like extends Plugin
+
+class PluginLike extends Plugin
 {
     
     public function Init()
