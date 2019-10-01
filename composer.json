@@ -2,7 +2,7 @@
     "name": "livestreet/plugin-like",
     "description": "Plugin for Livestreet likes",
     "type": "livestreet-plugin",
-    "code":"like",
+    
     "license": "MIT",
     "authors": [
         {
@@ -11,6 +11,9 @@
         }
     ],
     "minimum-stability": "dev",
+    "extra":{
+        "code":"like"
+    },
     "require": {},
     "autoload": {
         "classmap" : [
